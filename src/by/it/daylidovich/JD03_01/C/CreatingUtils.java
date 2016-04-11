@@ -58,9 +58,7 @@ public class CreatingUtils {
                 "FK_role INT NOT NULL,\n" +
                 "PRIMARY KEY (id),\n" +
                 "FOREIGN KEY (FK_role)\n" +
-                "  REFERENCES role_d (id)\n" +
-                "  ON DELETE CASCADE\n" +
-                "  ON UPDATE CASCADE)\n" +
+                "  REFERENCES role_d (id))\n" +
                 "ENGINE = InnoDB\n" +
                 "DEFAULT CHARACTER SET = utf8;\n");
 
@@ -75,25 +73,15 @@ public class CreatingUtils {
                 "Discount int NOT NULL,\n" +
                 "PRIMARY KEY (id),\n" +
                 "FOREIGN KEY (FK_country)\n" +
-                "    REFERENCES countries_d (id)\n" +
-                "    ON DELETE CASCADE\n" +
-                "    ON UPDATE CASCADE,\n" +
+                "    REFERENCES countries_d (id),\n" +
                 "FOREIGN KEY (FK_type_tour)\n" +
-                "    REFERENCES type_tour_d (id)\n" +
-                "    ON DELETE CASCADE\n" +
-                "    ON UPDATE CASCADE,\n" +
+                "    REFERENCES type_tour_d (id),\n" +
                 "FOREIGN KEY (FK_transport)\n" +
-                "    REFERENCES transport_d (id)\n" +
-                "    ON DELETE CASCADE\n" +
-                "    ON UPDATE CASCADE,\n" +
+                "    REFERENCES transport_d (id),\n" +
                 "FOREIGN KEY (FK_type_hotel)\n" +
-                "    REFERENCES type_hotel_d (id)\n" +
-                "    ON DELETE CASCADE\n" +
-                "    ON UPDATE CASCADE,\n" +
+                "    REFERENCES type_hotel_d (id),\n" +
                 "FOREIGN KEY (FK_food_complex)\n" +
-                "    REFERENCES food_complex_d (id)\n" +
-                "    ON DELETE CASCADE\n" +
-                "    ON UPDATE CASCADE)\n" +
+                "    REFERENCES food_complex_d (id))\n" +
                 "ENGINE = InnoDB\n" +
                 "DEFAULT CHARACTER SET = utf8;\n");
 
@@ -111,23 +99,17 @@ public class CreatingUtils {
                     "FK_tour int(3) NOT NULL,\n" +
                     "PRIMARY KEY (id),\n" +
                     "FOREIGN KEY (FK_action)\n" +
-                    "    REFERENCES type_action_d (id)\n" +
-                    "    ON DELETE CASCADE\n" +
-                    "    ON UPDATE CASCADE,\n" +
+                    "    REFERENCES type_action_d (id),\n" +
                     "FOREIGN KEY (FK_user)\n" +
-                    "    REFERENCES users_d (id)\n" +
-                    "    ON DELETE CASCADE\n" +
-                    "    ON UPDATE CASCADE,\n" +
+                    "    REFERENCES users_d (id),\n" +
                     "FOREIGN KEY (FK_tour)\n" +
-                    "    REFERENCES tours_d (id)\n" +
-                    "    ON DELETE CASCADE\n" +
-                    "    ON UPDATE CASCADE)\n" +
+                    "    REFERENCES tours_d (id))\n" +
                     "ENGINE = InnoDB\n" +
                     "DEFAULT CHARACTER SET = utf8;\n");
     }
 
     public static void deleteTable(Statement statement) throws SQLException {
-            statement.executeUpdate("ALTER TABLE users_d DROP FOREIGN KEY FK_role");
+            /*statement.executeUpdate("ALTER TABLE users_d DROP FOREIGN KEY FK_role");
             statement.executeUpdate("ALTER TABLE users_d DROP FOREIGN KEY FK_food_complex");
             statement.executeUpdate("ALTER TABLE users_d DROP FOREIGN KEY FK_type_hotel");
             statement.executeUpdate("ALTER TABLE users_d DROP FOREIGN KEY FK_transport");
@@ -135,8 +117,8 @@ public class CreatingUtils {
             statement.executeUpdate("ALTER TABLE tours_d DROP FOREIGN KEY FK_country");
             statement.executeUpdate("ALTER TABLE action_d DROP FOREIGN KEY FK_action");
             statement.executeUpdate("ALTER TABLE users_d DROP FOREIGN KEY FK_user");
-            statement.executeUpdate("ALTER TABLE users_d DROP FOREIGN KEY FK_tour");
-            statement.executeUpdate("DROP TABLE IF EXISTS role_d");
+            statement.executeUpdate("ALTER TABLE users_d DROP FOREIGN KEY FK_tour");*/
+            statement.execute("DROP TABLE IF EXISTS role_d ");
             statement.executeUpdate("DROP TABLE IF EXISTS countries_d");
             statement.executeUpdate("DROP TABLE IF EXISTS transport_d");
             statement.executeUpdate("DROP TABLE IF EXISTS type_tour_d");
@@ -146,6 +128,7 @@ public class CreatingUtils {
             statement.executeUpdate("DROP TABLE IF EXISTS users_d");
             statement.executeUpdate("DROP TABLE IF EXISTS tours_d");
             statement.executeUpdate("DROP TABLE IF EXISTS action_d");
+
     }
 
     public static void insertDataToTables(Statement statement) throws SQLException {
