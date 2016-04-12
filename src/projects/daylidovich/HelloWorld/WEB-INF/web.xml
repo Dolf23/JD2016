@@ -12,7 +12,7 @@
     <display-name>Ant Hello </display-name>
     <servlet>
         <servlet-name>hello</servlet-name>
-        <servlet-class>projects.daylidovich.servlets.hello_dolf</servlet-class>
+        <servlet-class>projects.daylidovich.HelloWorld.servlets.hello_dolf</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>hello</servlet-name>
