@@ -1,5 +1,6 @@
 package projects.daylidovich.servlets;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,6 +23,18 @@ public class hello_dolf extends HttpServlet {
                 e.printStackTrace();
             }
         }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        PrintWriter out = resp.getWriter();
+        out.println("Post intercepted.");
+        out.flush();
+        try{
+            getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static final String USER_DB = "root";
     public static final String PASSWORD_DB = "";
