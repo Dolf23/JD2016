@@ -60,7 +60,7 @@
 
         <echo>Deploy ${tomcat.webapps}/${web.root}.war</echo>
         <copy todir="${tomcat.webapps}">
-            <fileset file="../dist/${web.root}.war"/>
+            <fileset file="../HelloWorld/dist/${web.root}.war"/>
         </copy>
     </target>
 
