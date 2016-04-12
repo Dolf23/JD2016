@@ -1,4 +1,4 @@
-<project name="daylidovich" default="DeployToXampp" basedir="..">
+<project name="HelloWorld" default="DeployToXampp" basedir="..">
     <property file="ant/build.properties"/>
 
     <path id="classpath">

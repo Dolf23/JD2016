@@ -9,7 +9,7 @@
         daylidovich: Hello!!!
     </description>
 
-    <display-name>daylidovich: demo </display-name>
+    <display-name>Ant Hello </display-name>
     <servlet>
         <servlet-name>hello</servlet-name>
         <servlet-class>projects.daylidovich.servlets.hello_dolf</servlet-class>
