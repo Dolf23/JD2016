@@ -1,4 +1,4 @@
-package projects.daylidovich.servlets;
+package projects.daylidovich.HelloWorld.servlets;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
