@@ -1,0 +1,92 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0"
+         metadata-complete="true">
+
+    <description>
+        daylidovich: Travel agency
+    </description>
+
+    <display-name>Travel agency</display-name>
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>projects.daylidovich.TravelAgency.servlets.Login</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/login/</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Registry</servlet-name>
+        <servlet-class>projects.daylidovich.TravelAgency.servlets.Registry</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Registry</servlet-name>
+        <url-pattern>/registry/</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CreateTour</servlet-name>
+        <servlet-class>projects.daylidovich.TravelAgency.servlets.CreateTour</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateTour</servlet-name>
+        <url-pattern>/createtour/</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Discount</servlet-name>
+        <servlet-class>projects.daylidovich.TravelAgency.servlets.Discount</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Discount</servlet-name>
+        <url-pattern>/discount/</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Reserv</servlet-name>
+        <servlet-class>projects.daylidovich.TravelAgency.servlets.Registry</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Reserv</servlet-name>
+        <url-pattern>/reserv/</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SelectTour</servlet-name>
+        <servlet-class>projects.daylidovich.TravelAgency.servlets.TourSelect</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SelectTour</servlet-name>
+        <url-pattern>/select/</url-pattern>
+    </servlet-mapping>
+
+    <security-role>
+        <role-name>user</role-name>
+        <role-name>touragent</role-name>
+    </security-role>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>Enter login and password</realm-name>
+        <form-login-config>
+            <form-login-page>../webroot/login.jsp</form-login-page>
+            <form-error-page>../webroot/login.jsp</form-error-page>
+        </form-login-config>
+    </login-config>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>CreateAa</web-resource-name>
+            <url-pattern>/createad.jsp</url-pattern>
+        </web-resource-collection>
+
+        <auth-constraint>
+            <role-name>user</role-name>
+            <role-name>touragent</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+
+</web-app>
