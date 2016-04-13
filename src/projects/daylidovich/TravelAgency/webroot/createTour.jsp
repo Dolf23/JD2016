@@ -1,23 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta http-equiv="Cache-Control" content="no-cache">
-    <title></title>
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <script src="js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-</head>
-<body>
+<%@ page language="java" pageEncoding="UTF-8" %>
+<%@ include file="top.jsp" %>
+
 <form class="form-horizontal">
     <fieldset>
 
-<<<<<<< HEAD
-=======
-        <!-- Form Name -->
-        <legend>Form Name</legend>
-
->>>>>>> origin/master
         <!-- Text input-->
         <div class="form-group">
             <label class="col-md-4 control-label" for="textinputTypeTour">Type tour</label>
@@ -83,5 +69,4 @@
     </fieldset>
 </form>
 
-</body>
-</html>
+<%@ include file="bottom.jsp" %>

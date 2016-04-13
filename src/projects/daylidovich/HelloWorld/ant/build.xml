@@ -42,7 +42,7 @@
     <!-- формирование war-сборки (архивация) -->
     <target name="05war" depends="04copy">
         <echo>Building the war file</echo>
-        <war destfile="../HelloWorld/dist/${web.root}.war" webxml="${build.dir}/WEB-INF/web.xml">
+        <war destfile="../HelloWorld/${dist.dir}/${web.root}.war" webxml="${build.dir}/WEB-INF/web.xml">
             <fileset dir="${build.dir}"/>
         </war>
     </target>
@@ -60,7 +60,7 @@
 
         <echo>Deploy ${tomcat.webapps}/${web.root}.war</echo>
         <copy todir="${tomcat.webapps}">
-            <fileset file="../HelloWorld/dist/${web.root}.war"/>
+            <fileset file="../HelloWorld/${dist.dir}/${web.root}.war"/>
         </copy>
     </target>
 
