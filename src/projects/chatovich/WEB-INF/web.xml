@@ -60,6 +60,15 @@
         <url-pattern>/log_out</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>userProfile</servlet-name>
+        <servlet-class>projects.chatovich.servlets.userProfile</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>userProfile</servlet-name>
+        <url-pattern>/userProfile</url-pattern>
+    </servlet-mapping>
+
     <filter>
         <filter-name>codeF</filter-name>
         <filter-class>projects.chatovich.servlets.FilterCode</filter-class>
