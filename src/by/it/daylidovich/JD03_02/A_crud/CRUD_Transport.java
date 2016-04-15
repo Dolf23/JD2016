@@ -6,7 +6,7 @@ import java.sql.*;
 
 public class CRUD_Transport {
     public static void read() throws SQLException {
-        Connection connection  = DriverManager.getConnection(CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
+        Connection connection  = CN.getConnection();
         Statement statement = connection.createStatement();
         System.out.println("Table Transport:");
         ResultSet resultSet=statement.executeQuery("SELECT * FROM transport_d;");
@@ -18,7 +18,7 @@ public class CRUD_Transport {
     }
 
     public static void create(String transport) throws SQLException{
-        Connection connection  = DriverManager.getConnection(CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
+        Connection connection  = CN.getConnection();
         Statement statement = connection.createStatement();
         statement.executeUpdate("INSERT INTO transport_d(Transport) VALUES ('" + transport + "')");
         ResultSet resultSet = statement.executeQuery("SELECT * FROM transport_d ORDER BY id DESC LIMIT 1");
@@ -31,7 +31,7 @@ public class CRUD_Transport {
     }
 
     public static void update(int id, String transport) throws SQLException{
-        Connection connection  = DriverManager.getConnection(CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
+        Connection connection  = CN.getConnection();
         Statement statement = connection.createStatement();
         statement.executeUpdate("UPDATE transport_d SET Transport='" + transport + "' WHERE id=" + id);
         ResultSet resultSet=statement.executeQuery("SELECT * FROM transport_d WHERE id=" + id);
@@ -44,7 +44,7 @@ public class CRUD_Transport {
     }
 
     public static void delete(int id) throws SQLException{
-        Connection connection  = DriverManager.getConnection(CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
+        Connection connection  = CN.getConnection();
         Statement statement = connection.createStatement();
         statement.executeUpdate("DELETE FROM transport_d WHERE id=" + id);
         read();
