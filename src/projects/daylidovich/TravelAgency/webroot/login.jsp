@@ -1,3 +1,6 @@
+<%@ page language="java" pageEncoding="UTF-8" %>
+<%@ include file="top.jsp" %>
+
 <form class="form-horizontal">
     <fieldset>
 
@@ -30,3 +33,5 @@
 
     </fieldset>
 </form>
+
+<%@ include file="bottom.jsp" %>

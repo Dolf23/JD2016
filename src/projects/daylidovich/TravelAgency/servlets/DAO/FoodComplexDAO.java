@@ -7,7 +7,7 @@ public class FoodComplexDAO {
     public static Integer getID(String food) throws SQLException {
         Integer out = null;
         String sql = String.format("SELECT ID FROM food_complex_d WHERE Food_complex='%s';", food);
-        ResultSet resultSet = by.it.daylidovich.JD03_03.DAO.DAO.getStatement().executeQuery(sql);
+        ResultSet resultSet = DAO.getStatement().executeQuery(sql);
         if (resultSet.next()) out = resultSet.getInt("id");
         return out;
     }

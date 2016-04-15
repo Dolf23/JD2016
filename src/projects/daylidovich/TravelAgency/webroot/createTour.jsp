@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="top.jsp" %>
 
-<form class="form-horizontal">
+<form class="form-horizontal" action="createtour" method="post">
     <fieldset>
 
         <!-- Text input-->

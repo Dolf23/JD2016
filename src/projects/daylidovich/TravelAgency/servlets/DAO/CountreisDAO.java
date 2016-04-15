@@ -7,7 +7,7 @@ public class CountreisDAO {
     public static Integer getID(String country) throws SQLException {
         Integer out = null;
         String sql = String.format("SELECT ID FROM countries_d WHERE Country='%s';", country);
-        ResultSet resultSet = by.it.daylidovich.JD03_03.DAO.DAO.getStatement().executeQuery(sql);
+        ResultSet resultSet = DAO.getStatement().executeQuery(sql);
         if (resultSet.next()) out = resultSet.getInt("id");
 
         return out;

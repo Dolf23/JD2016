@@ -1,4 +1,7 @@
-<form class="form-horizontal">
+<%@ page language="java" pageEncoding="UTF-8" %>
+<%@ include file="top.jsp" %>
+
+<form class="form-horizontal" action="registry" method="post">
     <fieldset>
 
         <!-- Text input-->
@@ -70,3 +73,5 @@
 
     </fieldset>
 </form>
+
+<%@ include file="bottom.jsp" %>

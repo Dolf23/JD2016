@@ -7,7 +7,7 @@ public class TransportDAO {
     public static Integer getID(String transport) throws SQLException {
         Integer out = null;
         String sql = String.format("SELECT ID FROM transport_d WHERE Transport='%s';", transport);
-        ResultSet resultSet = by.it.daylidovich.JD03_03.DAO.DAO.getStatement().executeQuery(sql);
+        ResultSet resultSet = DAO.getStatement().executeQuery(sql);
         if (resultSet.next()) out = resultSet.getInt("id");
         return out;
     }
