@@ -7,14 +7,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Log out
  *
  */
-public class log_out extends HttpServlet {
+public class log_out extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         req.getSession().invalidate();
-        resp.sendRedirect("/chatovich/index.jsp");
+        req.setAttribute("userIn", false);
+        req.getRequestDispatcher("/index.jsp").forward(req,resp);
     }
 }

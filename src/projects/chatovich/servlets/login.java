@@ -64,15 +64,18 @@ public class login extends HttpServlet {
                 int age = Utils.getUserAge(birthdate);
                 user.setAge(age);
             }
+            req.setAttribute("userIn", true);
             HttpSession session = req.getSession();
+            session.setAttribute("auth",true);
+
             session.setAttribute("user",user);
-            Cookie logCookie = new Cookie("login",login);
+            /*Cookie logCookie = new Cookie("login",login);
             logCookie.setMaxAge(60*60*24);
             resp.addCookie(logCookie);
 
             Cookie pasCookie = new Cookie("password",password);
             pasCookie.setMaxAge(60*60*24);
-            resp.addCookie(pasCookie);
+            resp.addCookie(pasCookie);*/
             session.setAttribute("auth",(Boolean)true);
             session.setAttribute("login", login);
             //resp.sendRedirect("/chatovich/index.jsp");

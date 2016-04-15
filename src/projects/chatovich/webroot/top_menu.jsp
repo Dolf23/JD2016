@@ -1,4 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
+<%@ page session="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,7 @@
     <link href="css/bootsnipp-login.css" rel="stylesheet" />
     <link href="css/bootsnipp-profile.css" rel="stylesheet" />
     <link href="css/bootsnipp-results.css" rel="stylesheet" />
-
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <script src="js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </head>
@@ -25,12 +26,27 @@
         <nav class="navbar navbar-fixed-top">
             <div class="container">
             <div id="navbar" class="navbar-collapse collapse">
-                                <ul class="nav navbar-nav">
-                                    <li><a href="login.jsp" class="menu">Log in</a></li>
-                                    <li><a href="register.jsp" class="menu">Register</a></li>
-                                    <li><a href="search.jsp" class="menu">Search</a></li>
-                                    <li><a href="userProfile.jsp" class="menu">My Profile</a></li>
-                                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="index.jsp" class="menu">Home</a></li>
+
+                <c:choose>
+                    <c:when test="${sessionScope.auth}">
+                            <li><a href="logout.jsp" class="menu">Log out</a></li>
+
+                    </c:when>
+
+                    <c:otherwise>
+                        <li><a href="login.jsp" class="menu">Log in</a></li>
+                    </c:otherwise>
+                </c:choose>
+
+
+
+
+                    <li><a href="register.jsp" class="menu">Register</a></li>
+                    <li><a href="search.jsp" class="menu">Search</a></li>
+                    <li><a href="userProfile.jsp" class="menu">My Profile</a></li>
+                </ul>
             </div>
             </div>
         </nav>
