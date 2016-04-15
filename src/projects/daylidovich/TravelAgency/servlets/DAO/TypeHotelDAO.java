@@ -7,7 +7,7 @@ public class TypeHotelDAO {
     public static Integer getID(String typeHotel) throws SQLException {
         Integer out = null;
         String sql = String.format("SELECT ID FROM type_hotel_d WHERE Type_hotel='%s';", typeHotel);
-        ResultSet resultSet = projects.daylidovich.TravelAgency.servlets.DAO.DAO.getStatement().executeQuery(sql);
+        ResultSet resultSet = DAO.getStatement().executeQuery(sql);
         if (resultSet.next()) out = resultSet.getInt("id");
         return out;
     }

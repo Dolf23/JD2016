@@ -39,12 +39,12 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>Reserv</servlet-name>
+        <servlet-name>Reserve</servlet-name>
         <servlet-class>projects.daylidovich.TravelAgency.servlets.Registry</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Reserv</servlet-name>
-        <url-pattern>/reserv/</url-pattern>
+        <servlet-name>Reserve</servlet-name>
+        <url-pattern>/reserve/</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -55,30 +55,4 @@
         <servlet-name>SelectTour</servlet-name>
         <url-pattern>/select/</url-pattern>
     </servlet-mapping>
-
-    <security-role>
-        <role-name>user</role-name>
-        <role-name>touragent</role-name>
-    </security-role>
-    <login-config>
-        <auth-method>FORM</auth-method>
-        <realm-name>Enter login and password</realm-name>
-        <form-login-config>
-            <form-login-page>../webroot/login.jsp</form-login-page>
-            <form-error-page>../webroot/login.jsp</form-error-page>
-        </form-login-config>
-    </login-config>
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>CreateAa</web-resource-name>
-            <url-pattern>/createad.jsp</url-pattern>
-        </web-resource-collection>
-
-        <auth-constraint>
-            <role-name>user</role-name>
-            <role-name>touragent</role-name>
-        </auth-constraint>
-    </security-constraint>
-
-
 </web-app>

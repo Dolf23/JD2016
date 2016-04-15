@@ -23,19 +23,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/akhmelev">Главная</a>
+                <a class="navbar-brand" href="/TravelAgency">Main</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href=".">Поиск объявлений</a></li>
-                    <li><a href="createad.jsp">Создать объявление</a></li>
-                    <li><a href="#no-link">Link</a></li>
-                    <li><a href="#no-link">Link</a></li>
+                    <li><a href="tourSelect.jsp">Select tour</a></li>
+                    <li><a href="createTour.jsp">Create tour</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="signup.jsp">Sign-up</a></li>
-                    <li><a href="signin.jsp">Sign-in</a></li>
-                    <li><a href="signout.jsp">Sign-out</a></li>
+                    <li><a href="login.jsp">Login</a></li>
+                    <li><a href="registry.jsp">Registry</a></li>
+                    <li><a href="loginout.jsp">Sign-out</a></li>
                     <li><a href="/manager/html/list">Tomcat</a></li>
                 </ul>
             </div><!--/.nav-collapse -->

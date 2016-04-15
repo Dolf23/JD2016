@@ -8,7 +8,7 @@ public class DAO {
 
     private static Connection connection;
     private static Statement statement;
-    private static by.it.daylidovich.JD03_03.DAO.DAO dao;
+    private static DAO dao;
 
     public DAO() {
         try {
@@ -23,9 +23,9 @@ public class DAO {
         return statement;
     }
 
-    public static by.it.daylidovich.JD03_03.DAO.DAO getDAO() {
+    public static DAO getDAO() {
         if (dao == null) {
-            dao = new by.it.daylidovich.JD03_03.DAO.DAO();
+            dao = new DAO();
         }
         return dao;
     }

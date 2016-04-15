@@ -7,7 +7,7 @@ public class TypeTourDAO {
     public static Integer getID(String typeTour) throws SQLException {
         Integer out = null;
         String sql = String.format("SELECT ID FROM type_tour_d WHERE Type_tour='%s';", typeTour);
-        ResultSet resultSet = by.it.daylidovich.JD03_03.DAO.DAO.getStatement().executeQuery(sql);
+        ResultSet resultSet = DAO.getStatement().executeQuery(sql);
         if (resultSet.next()) out = resultSet.getInt("id");
         return out;
     }
