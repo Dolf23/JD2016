@@ -6,7 +6,7 @@ import java.sql.*;
 
 public class CRUD_Users {
     public static void read() throws SQLException {
-        Connection connection  = DriverManager.getConnection(CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
+        Connection connection  = CN.getConnection();
         Statement statement = connection.createStatement();
         System.out.println("Table User:");
         ResultSet resultSet=statement.executeQuery("SELECT * FROM users_d;");
@@ -18,7 +18,7 @@ public class CRUD_Users {
     }
 
     public static void create(String Name , String Surname, String Email, String Login, String Password, int FK_Role) throws SQLException{
-        Connection connection  = DriverManager.getConnection(CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
+        Connection connection  = CN.getConnection();
         Statement statement = connection.createStatement();
         statement.executeUpdate("INSERT INTO users_d(Name, Surname, Email, Login, Password, FK_Role) VALUES ('" + Name + "', '" + Surname + "', '" + Email + "', '" + Login + "', '" + Password + "', " + FK_Role + ")");
         ResultSet resultSet = statement.executeQuery("SELECT * FROM users_d ORDER BY ID DESC LIMIT 1");
@@ -31,7 +31,7 @@ public class CRUD_Users {
     }
 
     public static void update(int id, String Name , String Surname, String Email, String Login, String Password, int FK_Role) throws SQLException{
-        Connection connection  = DriverManager.getConnection(CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
+        Connection connection  = CN.getConnection();
         Statement statement = connection.createStatement();
         statement.executeUpdate("UPDATE users_d SET Name='" + Name + "',  Surname='" + Surname + "',  Email='" + Email + "',  Login='" + Login + "',  Password='" + Password + "',  FK_Role='" + FK_Role + "' WHERE id=" + id);
         ResultSet resultSet=statement.executeQuery("SELECT * FROM users_d WHERE id=" + id);
@@ -44,7 +44,7 @@ public class CRUD_Users {
     }
 
     public static void delete(int id) throws SQLException{
-        Connection connection  = DriverManager.getConnection(CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
+        Connection connection  = CN.getConnection();
         Statement statement = connection.createStatement();
         statement.executeUpdate("DELETE FROM users_d WHERE id=" + id);
         read();

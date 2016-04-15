@@ -7,7 +7,7 @@ import java.sql.*;
 public class CRUD_Countries {
 
         public static void read() throws SQLException {
-            Connection connection  = DriverManager.getConnection(CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
+            Connection connection  = CN.getConnection();
             Statement statement = connection.createStatement();
             System.out.println("Table Countries:");
             ResultSet resultSet=statement.executeQuery("SELECT * FROM countries_d;");
@@ -19,7 +19,7 @@ public class CRUD_Countries {
         }
 
         public static void create(String country) throws SQLException{
-            Connection connection  = DriverManager.getConnection(CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
+            Connection connection  = CN.getConnection();
             Statement statement = connection.createStatement();
             statement.executeUpdate("INSERT INTO countries_d(Country) VALUES ('" + country + "')");
             ResultSet resultSet = statement.executeQuery("SELECT * FROM countries_d ORDER BY id DESC LIMIT 1");
@@ -32,7 +32,7 @@ public class CRUD_Countries {
         }
 
         public static void update(int id, String country) throws SQLException{
-            Connection connection  = DriverManager.getConnection(CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
+            Connection connection  = CN.getConnection();
             Statement statement = connection.createStatement();
             statement.executeUpdate("UPDATE countries_d SET Country='" + country + "' WHERE id=" + id);
             ResultSet resultSet=statement.executeQuery("SELECT * FROM countries_d WHERE id=" + id);
@@ -45,7 +45,7 @@ public class CRUD_Countries {
         }
 
         public static void delete(int id) throws SQLException{
-            Connection connection  = DriverManager.getConnection(CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
+            Connection connection  = CN.getConnection();
             Statement statement = connection.createStatement();
             statement.executeUpdate("DELETE FROM countries_d WHERE id=" + id);
             read();

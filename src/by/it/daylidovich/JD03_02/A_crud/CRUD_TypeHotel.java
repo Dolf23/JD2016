@@ -6,7 +6,7 @@ import java.sql.*;
 
 public class CRUD_TypeHotel {
     public static void read() throws SQLException {
-        Connection connection  = DriverManager.getConnection(CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
+        Connection connection  = CN.getConnection();
         Statement statement = connection.createStatement();
         System.out.println("Table Type Hotel:");
         ResultSet resultSet=statement.executeQuery("SELECT * FROM type_hotel_d;");
@@ -18,7 +18,7 @@ public class CRUD_TypeHotel {
     }
 
     public static void create(String hotelType) throws SQLException{
-        Connection connection  = DriverManager.getConnection(CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
+        Connection connection  = CN.getConnection();
         Statement statement = connection.createStatement();
         statement.executeUpdate("INSERT INTO type_hotel_d(Type_hotel) VALUES ('" + hotelType + "')");
         ResultSet resultSet = statement.executeQuery("SELECT * FROM type_hotel_d ORDER BY id DESC LIMIT 1");
@@ -31,7 +31,7 @@ public class CRUD_TypeHotel {
     }
 
     public static void update(int id, String hotelType) throws SQLException{
-        Connection connection  = DriverManager.getConnection(CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
+        Connection connection  = CN.getConnection();
         Statement statement = connection.createStatement();
         statement.executeUpdate("UPDATE type_hotel_d SET Type_hotel='" + hotelType + "' WHERE id=" + id);
         ResultSet resultSet=statement.executeQuery("SELECT * FROM type_hotel_d WHERE id=" + id);
@@ -44,7 +44,7 @@ public class CRUD_TypeHotel {
     }
 
     public static void delete(int id) throws SQLException{
-        Connection connection  = DriverManager.getConnection(CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
+        Connection connection  = CN.getConnection();
         Statement statement = connection.createStatement();
         statement.executeUpdate("DELETE FROM type_hotel_d WHERE id=" + id);
         read();
