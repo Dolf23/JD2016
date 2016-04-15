@@ -51,6 +51,15 @@
         <url-pattern>/tologin</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>log_out</servlet-name>
+        <servlet-class>projects.chatovich.servlets.log_out</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>log_out</servlet-name>
+        <url-pattern>/log_out</url-pattern>
+    </servlet-mapping>
+
     <filter>
         <filter-name>codeF</filter-name>
         <filter-class>projects.chatovich.servlets.FilterCode</filter-class>

@@ -41,7 +41,7 @@ public class FilterAuth implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
 
-       /* HttpSession session = req.getSession();
+        HttpSession session = req.getSession();
         if (session == null) {
             resp.sendRedirect("/chatovich/login.jsp");
         }
@@ -52,7 +52,10 @@ public class FilterAuth implements Filter {
                 filterChain.doFilter(request,response);
                 return;
             }
-            else{*/
+            else {
+                resp.sendRedirect("/chatovich/login.jsp");
+            }
+            /*else{
 
                 Cookie[] myCookies = req.getCookies();
                 String cookieName = "login";
@@ -85,15 +88,15 @@ public class FilterAuth implements Filter {
                     for (Map.Entry<Integer, User> entry : users.entrySet()) {
                         user = entry.getValue();
                     }
-                    /*req.setAttribute("user", user);
-                    req.setAttribute("ok", "hello");*/
+                    *//*req.setAttribute("user", user);
+                    req.setAttribute("ok", "hello");*//*
                     filterChain.doFilter(req,resp);
                     return;
                     //req.getRequestDispatcher(req.getRequestURI()).forward(req,resp);
                     //req.getRequestDispatcher("/search").forward(req,resp);
                 }
-      /*      }
-        }*/
+            }*/
+        }
         /*Cookie[] myCookies = req.getCookies();
         String cookieName = "login";
         String cookiePassword = "password";
