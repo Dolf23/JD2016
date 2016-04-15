@@ -28,14 +28,24 @@
             			</div>
 
             			<div class="col-xs-12 col-sm-12 col-md-6 excerpet">
-            				<h3><a href="#" title="">${user.name} ${user.surname}, ${user.age} years old</a></h3>
+
+            			<form action="userProfile" id="profile" method="GET">
+                        <input type="hidden" name="id_user" value=${user.id}>
+                        <input type="hidden" name="login_user" value=${user.login}>
+
+            				<h3><a href="" onclick="document.getElementById('profile').submit(); return false;" title="">${user.name} ${user.surname}, ${user.age} years old</a></h3>
+
+            		    </form>
+
+
+
             				<h4>${city}</h4>
             				<h4>${user.email}</h4>
             				<p>${user.describtion}</p>
             			</div>
             			<span class="clearfix borda"></span>
-            		</article>
-        </c:forEach>
+            </article>
+    </c:forEach>
 
 
 
