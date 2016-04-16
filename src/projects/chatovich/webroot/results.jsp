@@ -31,10 +31,10 @@
 
             			<div class="col-xs-12 col-sm-12 col-md-6 excerpet">
 
-                        <input type="hidden" name="id_user" value="${user.id}"/>
+                        <input type="hidden" name="id_user" value="${user.id}" position:/>
 
             		    <h3><a href="" onclick="document.getElementById('profile').submit(); return false;" title="">
-            		        ${user.name} ${user.surname}, ${user.age} years old
+            		        ${user.name} ${user.surname}, ${user.age} (${user.id}-id) years old
             		       </a>
             		    </h3>
 

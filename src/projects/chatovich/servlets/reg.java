@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.ParseException;
@@ -139,8 +140,22 @@ public class reg extends HttpServlet{
                     req.getSession().invalidate();
                     req.setAttribute("userIn", false);
                 } else {
+                    PrintWriter out = resp.getWriter();
+                out.println(id);
+                out.println(user.getId());
+                    /*user.setName(name);
+                    user.setSurname(surname);
+                    user.setEmail(req.getParameter("email"));
+                    user.setPassword(password);
+                    user.setCity(cityDAO.getId(city));
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    Date parsedDate = dateFormat.parse(req.getParameter("birthdate"));
+                    Timestamp timestamp = new Timestamp(parsedDate.getTime());
+                    user.setBirthdate(timestamp);
+                    user.setDescribtion(req.getParameter("describtion"));
+                    user.setLogin(login);
                     userDAO.update(user);
-                    message = user.getName() + " " + user.getSurname() + "'s profile was updated.";
+                    message = user.getName() + " " + user.getSurname() + "'s profile was updated.";*/
 
                 }
             }
@@ -150,8 +165,8 @@ public class reg extends HttpServlet{
             e.printStackTrace();
         }
 
-        req.setAttribute("message", message);
-        req.getRequestDispatcher("/index.jsp").forward(req,resp);
+        /*req.setAttribute("message", message);
+        req.getRequestDispatcher("/index.jsp").forward(req,resp);*/
     }
 
     /*@Override
