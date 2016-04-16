@@ -7,14 +7,19 @@
 <div class = "container">
         <div class="wrapper">
             <form action="" method="post" name="Login_Form" class="form-signin">
-<c:if test="${loginExists}">
-                                <h3 class="form-signin-heading1">There is already a user with these login and password<br>Please try again</h3>
-                            </c:if>
-                <h3 class="form-signin-heading">Fill the registration form</h3>
+                <c:if test="${loginExists}">
+                    <h3 class="form-signin-heading1">There is already a user with these login and password<br>Please try again</h3>
+                </c:if>
+
+            <c:choose>
+                <c:when test="${sessionScope.auth}">
+                     <h3 class="form-signin-heading">Update information about yourself</h3>
+                </c:when>
+                <c:otherwise>
+                    <h3 class="form-signin-heading">Fill the registration form</h3>
+                </c:otherwise>
+            </c:choose>
                 <hr class="colorgraph"><br>
-
-
-
 
                 <input type="text" class="form-control" name="name" placeholder="First name" required="" autofocus="" />
                 <input type="text" class="form-control" name="surname" placeholder="Last name" required=""/>
@@ -26,7 +31,15 @@
                 <input type="text" class="form-control" name="describtion" placeholder="Describe yourself and the place where you live"/>
                 <input type="hidden" class="form-control" name="id" value="0"/>
 
-                <button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Register" type="Submit">Register</button>
+                <c:choose>
+                    <c:when test="${sessionScope.auth}">
+                        <button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Register" type="Submit">Update</button>
+                    </c:when>
+                    <c:otherwise>
+                        <button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Register" type="Submit">Register</button>
+                    </c:otherwise>
+                </c:choose>
+
             </form>
         </div>
 </div>

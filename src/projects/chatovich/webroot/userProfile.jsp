@@ -27,7 +27,8 @@
 
         <input id="id" name="id" type="hidden" value="${user.id}" class="form-control input-md"/>
 
-            <button id="button1id" name="button1id" class="btn btn-success">Update</button>
+            <input type="button" class="btn btn-success" value="Update" onclick="location.href='register.jsp' ">
+
             <button id="" name="" class="btn btn-danger"
                  onclick="document.getElementById('id').value=-document.getElementById('id').value;"
             >
