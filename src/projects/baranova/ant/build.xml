@@ -1,10 +1,9 @@
-<project name="AppBuilder" default="DeployToTomcat" basedir="">
-<property file="build.properties"/>
+<project name="Hotel" default="DeployToXampp" basedir="..">
+<property file="ant/build.properties"/>
 
     <path id="classpath">
-        <fileset dir="${lib.dir}" includes="servlet-api.jar"/>
+        <fileset dir="${lib.dir}" includes=""/>
     </path>
-
     <!-- очистка рабочего каталога -->
     <target name="01clean">
         <echo>Cleaning the ${build.dir}</echo>
@@ -19,13 +18,12 @@
     </target>
 
     <!-- компиляция файлов проекта -->
-    <target name="03compile" depends="02init">
+   <target name="03compile" depends="02init">
         <echo>Compile the source files</echo>
         <javac srcdir="${src.dir}" destdir="${build.dir}/WEB-INF/classes">
             <classpath refid="classpath"/>
         </javac>
     </target>
-
     <!-- копирование в рабочую директорию -->
     <target name="04copy" depends="03compile">
         <copy todir="${build.dir}/WEB-INF">
@@ -54,10 +52,16 @@
     </target>
 
     <!-- копирование в каталог Tomcat -->
-    <target name="DeployToTomcat" depends="06finalize">
+   <target name="DeployToXampp" depends="06finalize">
+     <!--   <echo>Cleaning the ${tomcat.webapps}/${web.root}</echo>
+        <delete dir="${tomcat.webapps}/${web.root}"/>-->
+
+        <echo>Deploy ${tomcat.webapps}/${web.root}.war</echo>
         <copy todir="${tomcat.webapps}">
             <fileset file="${dist.dir}/${web.root}.war"/>
         </copy>
+
+
     </target>
 
 </project>
