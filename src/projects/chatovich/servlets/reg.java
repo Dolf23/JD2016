@@ -1,19 +1,14 @@
 package projects.chatovich.servlets;
 
 import projects.chatovich.servlets.DAO.CityDAO;
-import projects.chatovich.servlets.DAO.FeedbackDAO;
 import projects.chatovich.servlets.DAO.UserDAO;
-import projects.chatovich.servlets.JD03_02.DB_it_academy.City;
-import projects.chatovich.servlets.JD03_02.DB_it_academy.Feedback;
 import projects.chatovich.servlets.JD03_02.DB_it_academy.User;
-import projects.chatovich.servlets.Utils.Utils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -86,6 +81,7 @@ public class reg extends HttpServlet{
         String city = req.getParameter("city");
         String login = req.getParameter("login");
         String password = req.getParameter("password");
+        String id = req.getParameter("id");
 
         try{
             CityDAO cityDAO = new CityDAO();

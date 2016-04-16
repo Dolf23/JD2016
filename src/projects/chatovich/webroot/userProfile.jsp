@@ -16,6 +16,29 @@
             <p>${user.describtion}</p>
         </div>
     </div>
+
+    <form action="delete" id="" method="POST" class="form-horizontal">
+    <fieldset>
+
+
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="button1id"></label>
+        <div class="col-md-8">
+
+        <input id="id" name="id" type="hidden" value="${user.id}" class="form-control input-md"/>
+
+            <button id="button1id" name="button1id" class="btn btn-success">Update</button>
+            <button id="" name="" class="btn btn-danger"
+                 onclick="document.getElementById('id').value=-document.getElementById('id').value;"
+            >
+                Delete
+            </button>
+      </div>
+    </div>
+
+    </fieldset>
+    </form>
+
 </div>
 </div> <!-- /container -->
 
