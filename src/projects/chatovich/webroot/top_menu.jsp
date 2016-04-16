@@ -40,10 +40,10 @@
                     </c:otherwise>
                 </c:choose>
 
-
-
-
+                <c:if test="${!sessionScope.auth}">
                     <li><a href="register.jsp" class="menu">Register</a></li>
+                </c:if>
+
                     <li><a href="search.jsp" class="menu">Search</a></li>
                     <li><a href="userProfile.jsp" class="menu">My Profile</a></li>
                 </ul>

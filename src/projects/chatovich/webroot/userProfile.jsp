@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <form action="delete" id="" method="POST" class="form-horizontal">
+    <form action="register" id="" method="POST" class="form-horizontal">
     <fieldset>
 
 

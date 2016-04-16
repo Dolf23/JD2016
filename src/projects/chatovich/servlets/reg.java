@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -75,65 +76,82 @@ public class reg extends HttpServlet{
         req.setCharacterEncoding("UTF-8");
         req.setAttribute("loginExists",false);
         req.setAttribute("l",false);
+        String message = "";
 
         String name = req.getParameter("name");
         String surname = req.getParameter("surname");
         String city = req.getParameter("city");
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-        String id = req.getParameter("id");
 
-        try{
-            CityDAO cityDAO = new CityDAO();
-            //если такого города в базе ещё нет
-            boolean b = cityDAO.isInDB(city);
-            if (!b)
-                cityDAO.create(city);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
 
-        User user = new User();
+        User user = (User)req.getSession().getAttribute("user");
+
         try{
             CityDAO cityDAO = new CityDAO();
             UserDAO userDAO = new UserDAO();
-            /*if (Utils.checkRegex(name))
-                user.setName(name);
-            if (Utils.checkRegex(surname))
-                user.setSurname(surname);*/
+            if (user==null) {
+                user = new User();
+                //если такого города в базе ещё нет
+                boolean b = cityDAO.isInDB(city);
+                if (!b)
+                    cityDAO.create(city);
 
-            //проверяем есть ли в базе пользователь с таким логином и паролем
-            HashMap<Integer, User> users = new HashMap<>();
-            users = userDAO.getAll("where login = '"+login+"' and password = '"+password+"';");
-            if (!users.isEmpty()){
-                req.setAttribute("loginExists",true);
-                req.getRequestDispatcher("/register.jsp").forward(req,resp);
+                //проверяем есть ли в базе пользователь с таким логином и паролем
+                HashMap<Integer, User> users = new HashMap<>();
+                users = userDAO.getAll("where login = '"+login+"' and password = '"+password+"';");
+                if (!users.isEmpty()){
+                    req.setAttribute("loginExists",true);
+                    req.getRequestDispatcher("/register.jsp").forward(req,resp);
+                }
+                user.setName(name);
+                user.setSurname(surname);
+                user.setEmail(req.getParameter("email"));
+                user.setPassword(password);
+                user.setCity(cityDAO.getId(city));
+
+                //конвертируем строку, полученную от пользователя, в timestamp
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                Date parsedDate = dateFormat.parse(req.getParameter("birthdate"));
+                Timestamp timestamp = new Timestamp(parsedDate.getTime());
+
+                user.setBirthdate(timestamp);
+                user.setDescribtion(req.getParameter("describtion"));
+                user.setLogin(login);
+
+                userDAO.create(user);
+                message="Congratulations! You're now registered at SearchHost! To start please log in.";
             }
 
+            else{
+                int id = Integer.parseInt(req.getParameter("id"));
+                /*PrintWriter out = resp.getWriter();
+                out.println(id);
+                out.println(user.getId());*/
 
-            user.setName(name);
-            user.setSurname(surname);
-            user.setEmail(req.getParameter("email"));
-            user.setPassword(password);
-            user.setCity(cityDAO.getId(city));
+                if (id < 0) {
 
-            //конвертируем строку, полученную от пользователя, в timestamp
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            Date parsedDate = dateFormat.parse(req.getParameter("birthdate"));
-            Timestamp timestamp = new Timestamp(parsedDate.getTime());
+                    //user.setId(-1 * user.getId());
+                    String deletedName = user.getName();
+                    String deletedSurname = user.getSurname();
+                    userDAO.delete(user);
+                    message = deletedName + " " + deletedSurname + "'s profile was deleted from SearchHost";
+                    req.getSession().invalidate();
+                    req.setAttribute("userIn", false);
+                } else {
+                    userDAO.update(user);
+                    message = user.getName() + " " + user.getSurname() + "'s profile was updated.";
 
-            user.setBirthdate(timestamp);
-            user.setDescribtion(req.getParameter("describtion"));
-            user.setLogin(login);
-
-
-            userDAO.create(user);
-
-        } catch (Exception e){
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        resp.sendRedirect("/chatovich/index.jsp");
+        req.setAttribute("message", message);
+        req.getRequestDispatcher("/index.jsp").forward(req,resp);
     }
 
     /*@Override

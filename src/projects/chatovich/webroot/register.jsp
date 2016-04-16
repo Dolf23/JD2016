@@ -24,6 +24,7 @@
                 <input type="text" class="form-control" name="city" placeholder="City" required=""/>
                 <input type="email" class="form-control" name="email" placeholder="Email" required=""/>
                 <input type="text" class="form-control" name="describtion" placeholder="Describe yourself and the place where you live"/>
+                <input type="hidden" class="form-control" name="id" value="0"/>
 
                 <button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Register" type="Submit">Register</button>
             </form>
