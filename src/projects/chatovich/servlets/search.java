@@ -37,6 +37,7 @@ public class search extends HttpServlet{
         req.setAttribute("city", city);
 
         HashMap <Integer, User> users = new HashMap<>();
+        HashMap <Integer, User> allUsers = new HashMap<>();
         HashMap <Integer, Feedback> feedbacks = new HashMap<>();
 
         try{
@@ -44,6 +45,7 @@ public class search extends HttpServlet{
             int id_city = cityDAO.getId(city);
             if (id_city!=0){
                 UserDAO userDAO = new UserDAO();
+                allUsers = userDAO.getAll("");
                 users = userDAO.getAll("where id_city = '"+id_city+"';");
                 FeedbackDAO feedbackDAO = new FeedbackDAO();
                 feedbacks = feedbackDAO.getAll("");
@@ -62,14 +64,22 @@ public class search extends HttpServlet{
 
         List<User> list = new ArrayList<>();
         User user = new User();
-            for (Map.Entry<Integer, User> entry : users.entrySet()) {
-                user = entry.getValue();
-                //req.setAttribute("name",user.getName());
-                Timestamp birthdate = user.getBirthdate();
-                int age = Utils.getUserAge(birthdate);
-                user.setAge(age);
-                list.add(user);
-            }
+        for (Map.Entry<Integer, User> entry : users.entrySet()) {
+            user = entry.getValue();
+            //req.setAttribute("name",user.getName());
+            Timestamp birthdate = user.getBirthdate();
+            int age = Utils.getUserAge(birthdate);
+            user.setAge(age);
+            list.add(user);
+        }
+
+        List<User> listAllUsers = new ArrayList<>();
+        User allUser = new User();
+        for (Map.Entry<Integer, User> entry : allUsers.entrySet()) {
+            allUser = entry.getValue();
+            //req.setAttribute("name",user.getName());
+            listAllUsers.add(allUser);
+        }
 
         List<Feedback> listFeedbacks = new ArrayList<>();
 
@@ -82,6 +92,7 @@ public class search extends HttpServlet{
 
             }
             req.setAttribute("feedbacks", listFeedbacks);
+            req.setAttribute("allUsers",listAllUsers);
         }
         req.setAttribute("anyUser", true);
         req.setAttribute("users", list);

@@ -44,7 +44,15 @@
 
             			<c:forEach var="feedback" items="${feedbacks}">
             			    <c:if test="${feedback.feedback_to==user.id}">
-            			        <p>${feedback.feedback_text}</p>
+
+            			        <c:forEach var="allUser" items="${allUsers}">
+            			            <c:if test="${feedback.feedback_from==allUser.id}">
+            			                <p><b>${allUser.name} ${allUser.surname} wrote about ${user.name}: </b>${feedback.feedback_text}</p>
+            			            </c:if>
+            			        </c:forEach>
+
+
+
             			    </c:if>
             			</c:forEach>
 
