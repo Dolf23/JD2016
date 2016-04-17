@@ -3,12 +3,14 @@ package projects.chatovich.servlets;
 import projects.chatovich.servlets.DAO.CityDAO;
 import projects.chatovich.servlets.DAO.UserDAO;
 import projects.chatovich.servlets.JD03_02.DB_it_academy.User;
+import projects.chatovich.servlets.Utils.Utils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.ParseException;
@@ -86,12 +88,15 @@ public class reg extends HttpServlet{
 
 
         User user = (User)req.getSession(true).getAttribute("user");
+        PrintWriter out = resp.getWriter();
 
         try{
+            //out.println(" in try");
             CityDAO cityDAO = new CityDAO();
             UserDAO userDAO = new UserDAO();
             if (user==null) {
                 user = new User();
+                //out.println("in user null");
                 //если такого города в базе ещё нет
                 boolean b = cityDAO.isInDB(city);
                 if (!b)
@@ -101,33 +106,37 @@ public class reg extends HttpServlet{
                 HashMap<Integer, User> users = new HashMap<>();
                 users = userDAO.getAll("where login = '"+login+"';");
                 if (!users.isEmpty()){
+                    //out.println("in if users is empty");
                     req.setAttribute("loginExists",true);
                     req.getRequestDispatcher("/register.jsp").forward(req,resp);
                 }
-                user.setName(name);
-                user.setSurname(surname);
-                user.setEmail(req.getParameter("email"));
-                user.setPassword(password);
-                user.setCity(cityDAO.getId(city));
+                else  {
+                    //out.println("in else users is empty");
 
-                //конвертируем строку, полученную от пользователя, в timestamp
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                Date parsedDate = dateFormat.parse(req.getParameter("birthdate"));
-                Timestamp timestamp = new Timestamp(parsedDate.getTime());
+                    user.setName(name);
+                    user.setSurname(surname);
+                    user.setEmail(req.getParameter("email"));
+                    user.setPassword(password);
+                    user.setCity(cityDAO.getId(city));
 
-                user.setBirthdate(timestamp);
-                user.setDescribtion(req.getParameter("describtion"));
-                user.setLogin(login);
+                    //конвертируем строку, полученную от пользователя, в timestamp
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    Date parsedDate = dateFormat.parse(req.getParameter("birthdate"));
+                    Timestamp timestamp = new Timestamp(parsedDate.getTime());
 
-                userDAO.create(user);
-                message="Congratulations! You're now registered at SearchHost! To start please log in.";
+                    user.setAge(Utils.getUserAge(timestamp));
+                    user.setBirthdate(timestamp);
+                    user.setDescribtion(req.getParameter("describtion"));
+                    user.setLogin(login);
+
+                    userDAO.create(user);
+                    message="Congratulations! You're now registered at SearchHost! To start please log in.";
+                }
             }
 
             else{
                 int id = Integer.parseInt(req.getParameter("id"));
-                /*PrintWriter out = resp.getWriter();
-                out.println(id);
-                out.println(user.getId());*/
+                //out.println("in id");
 
                 if (id < 0) {
 
@@ -151,6 +160,7 @@ public class reg extends HttpServlet{
                     Date parsedDate = dateFormat.parse(req.getParameter("birthdate"));
                     Timestamp timestamp = new Timestamp(parsedDate.getTime());
                     user.setBirthdate(timestamp);
+                    user.setAge(Utils.getUserAge(timestamp));
                     user.setDescribtion(req.getParameter("describtion"));
                     user.setLogin(login);
                     userDAO.update(user);

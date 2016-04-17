@@ -11,7 +11,7 @@
         <img align="left" class="fb-image-profile thumbnail" src="http://lorempixel.com/180/180/people/9/" alt="Profile image example"/>
         <div class="fb-profile-text">
             <h1>${user.name} ${user.surname}</h1>
-            <p>${user.age} years old, ${user.city}</p>
+            <p>${user.age} years old, ${city}</p>
             <p>${user.email}</p>
             <p>${user.describtion}</p>
         </div>

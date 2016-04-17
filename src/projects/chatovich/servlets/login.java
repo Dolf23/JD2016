@@ -1,6 +1,7 @@
 package projects.chatovich.servlets;
 
 
+import projects.chatovich.servlets.DAO.CityDAO;
 import projects.chatovich.servlets.DAO.UserDAO;
 import projects.chatovich.servlets.JD03_02.DB_it_academy.User;
 import projects.chatovich.servlets.Utils.Utils;
@@ -67,10 +68,16 @@ public class login extends HttpServlet {
                 int age = Utils.getUserAge(birthdate);
                 user.setAge(age);
             }
+            String city="";
+            try{
+                CityDAO cityDAO = new CityDAO();
+                city = cityDAO.getCity(user.getCity());
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             req.setAttribute("userIn", true);
             HttpSession session = req.getSession();
             session.setAttribute("auth",true);
-
             session.setAttribute("user",user);
             /*Cookie logCookie = new Cookie("login",login);
             logCookie.setMaxAge(60*60*24);
@@ -79,8 +86,8 @@ public class login extends HttpServlet {
             Cookie pasCookie = new Cookie("password",password);
             pasCookie.setMaxAge(60*60*24);
             resp.addCookie(pasCookie);*/
-            session.setAttribute("auth",(Boolean)true);
             session.setAttribute("login", login);
+            session.setAttribute("city",city);
             //resp.sendRedirect("/chatovich/index.jsp");
 
             req.setAttribute("user",user);
