@@ -38,9 +38,18 @@
             		       </a>
             		    </h3>
 
-            				<h4>${city}</h4>
-            				<h4>${user.email}</h4>
-            				<p>${user.describtion}</p>
+            			<h4>${city}</h4>
+            			<h4>${user.email}</h4>
+            			<p>${user.describtion}</p>
+
+            			<c:forEach var="feedback" items="${feedbacks}">
+            			    <c:if test="${feedback.feedback_to==user.id}">
+            			        <p>${feedback.feedback_text}</p>
+            			    </c:if>
+            			</c:forEach>
+
+
+
             			</div>
             			<span class="clearfix borda"></span>
             			    </form>

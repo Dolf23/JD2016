@@ -8,7 +8,7 @@
         <div class="wrapper">
             <form action="" method="post" name="Login_Form" class="form-signin">
                 <c:if test="${loginExists}">
-                    <h3 class="form-signin-heading1">There is already a user with these login and password<br>Please try again</h3>
+                    <h3 class="form-signin-heading1">There is already a user with this login<br>Please try again</h3>
                 </c:if>
 
             <c:choose>

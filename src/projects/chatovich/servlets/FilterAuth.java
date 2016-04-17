@@ -1,18 +1,10 @@
 package projects.chatovich.servlets;
 
-import projects.chatovich.servlets.DAO.UserDAO;
-import projects.chatovich.servlets.JD03_02.DB_it_academy.User;
-
 import javax.servlet.*;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  *
@@ -41,7 +33,7 @@ public class FilterAuth implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
 
-        HttpSession session = req.getSession();
+        HttpSession session = req.getSession(true);
         if (session == null) {
             resp.sendRedirect("/chatovich/login.jsp");
         }

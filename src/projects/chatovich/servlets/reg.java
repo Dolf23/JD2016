@@ -85,7 +85,7 @@ public class reg extends HttpServlet{
         String password = req.getParameter("password");
 
 
-        User user = (User)req.getSession().getAttribute("user");
+        User user = (User)req.getSession(true).getAttribute("user");
 
         try{
             CityDAO cityDAO = new CityDAO();
@@ -99,7 +99,7 @@ public class reg extends HttpServlet{
 
                 //проверяем есть ли в базе пользователь с таким логином и паролем
                 HashMap<Integer, User> users = new HashMap<>();
-                users = userDAO.getAll("where login = '"+login+"' and password = '"+password+"';");
+                users = userDAO.getAll("where login = '"+login+"';");
                 if (!users.isEmpty()){
                     req.setAttribute("loginExists",true);
                     req.getRequestDispatcher("/register.jsp").forward(req,resp);

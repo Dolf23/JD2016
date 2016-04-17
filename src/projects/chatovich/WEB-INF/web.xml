@@ -24,14 +24,7 @@
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>nologin</servlet-name>
-        <servlet-class>projects.chatovich.servlets.nologin</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>nologin</servlet-name>
-        <url-pattern>/nologin</url-pattern>
-    </servlet-mapping>
+
 
     <servlet>
         <servlet-name>search</servlet-name>
@@ -42,14 +35,7 @@
         <url-pattern>/search</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>tologin</servlet-name>
-        <servlet-class>projects.chatovich.servlets.tologin</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>tologin</servlet-name>
-        <url-pattern>/tologin</url-pattern>
-    </servlet-mapping>
+
 
     <servlet>
         <servlet-name>log_out</servlet-name>

@@ -1,7 +1,9 @@
 package projects.chatovich.servlets;
 
 import projects.chatovich.servlets.DAO.CityDAO;
+import projects.chatovich.servlets.DAO.FeedbackDAO;
 import projects.chatovich.servlets.DAO.UserDAO;
+import projects.chatovich.servlets.JD03_02.DB_it_academy.Feedback;
 import projects.chatovich.servlets.JD03_02.DB_it_academy.User;
 import projects.chatovich.servlets.Utils.Utils;
 
@@ -11,7 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -36,6 +37,7 @@ public class search extends HttpServlet{
         req.setAttribute("city", city);
 
         HashMap <Integer, User> users = new HashMap<>();
+        HashMap <Integer, Feedback> feedbacks = new HashMap<>();
 
         try{
             CityDAO cityDAO = new CityDAO();
@@ -43,6 +45,9 @@ public class search extends HttpServlet{
             if (id_city!=0){
                 UserDAO userDAO = new UserDAO();
                 users = userDAO.getAll("where id_city = '"+id_city+"';");
+                FeedbackDAO feedbackDAO = new FeedbackDAO();
+                feedbacks = feedbackDAO.getAll("");
+
             }
             else {
                 req.setAttribute("anyUser", false);
@@ -66,9 +71,21 @@ public class search extends HttpServlet{
                 list.add(user);
             }
 
+        List<Feedback> listFeedbacks = new ArrayList<>();
+
+        if (!feedbacks.isEmpty()) {
+            Feedback feedback;
+            for (Map.Entry<Integer, Feedback> entry : feedbacks.entrySet()) {
+                feedback = entry.getValue();
+                listFeedbacks.add(feedback);
+                //out.println(feedback);
+
+            }
+            req.setAttribute("feedbacks", listFeedbacks);
+        }
         req.setAttribute("anyUser", true);
         req.setAttribute("users", list);
-        req.setAttribute("username",list.get(0).getName());
+        //req.setAttribute("feedbacks", listFeedbacks);
         req.setAttribute("user", user);
         req.setAttribute("usersQuantity", list.size());
 
