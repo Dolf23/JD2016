@@ -25,7 +25,27 @@
         </c:forEach>
     </c:forEach>
 
-     </c:forEach>
+
+<form name = "addFeedback" action="addFeedback" method="POST" class="form-horizontal">
+     <div class="container">
+         <div>
+             <br style="clear:both">
+                 <div class="form-group col-md-4 ">
+                     <label id="messageLabel" for="message">Write your feedback about ${user.name} </label>
+                     <textarea class="form-control input-sm " type="textarea" id="message" name="message" maxlength="140" rows="7"></textarea>
+                         <span class="help-block"><p id="characterLeft" class="help-block ">You have reached the limit</p></span>
+                 </div>
+             <br style="clear:both">
+             <div class="form-group col-md-2">
+             <input id="id" name="idFBreceiver" type="hidden" value="${user.id}" class="form-control input-md"/>
+             <button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Register" type="Submit">Send</button>
+         </div>
+     </div>
+</form>
+
+
+
+         </c:forEach>
 
             </div>
         </div>

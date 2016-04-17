@@ -64,6 +64,15 @@
         <url-pattern>/delete</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>addFeedback</servlet-name>
+        <servlet-class>projects.chatovich.servlets.addFeedback</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addFeedback</servlet-name>
+        <url-pattern>/addFeedback</url-pattern>
+    </servlet-mapping>
+
     <filter>
         <filter-name>codeF</filter-name>
         <filter-class>projects.chatovich.servlets.FilterCode</filter-class>
@@ -88,6 +97,9 @@
     <filter-mapping>
         <filter-name>authF</filter-name>
         <url-pattern>/search.jsp</url-pattern>
+        <url-pattern>/profil.jsp</url-pattern>
+        <url-pattern>/results.jsp</url-pattern>
+        <url-pattern>/logout.jsp</url-pattern>
         <url-pattern>/userProfile.jsp</url-pattern>
     </filter-mapping>
 

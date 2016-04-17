@@ -12,8 +12,11 @@
     <link href="css/bootsnipp-login.css" rel="stylesheet" />
     <link href="css/bootsnipp-profile.css" rel="stylesheet" />
     <link href="css/bootsnipp-results.css" rel="stylesheet" />
+    <link href="js/bootsnipp-add-feedback.js" rel="stylesheet" />
+    <link href="css/bootsnipp-add-feedback.css" rel="stylesheet" />
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootsnipp-add-feedback.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
 
