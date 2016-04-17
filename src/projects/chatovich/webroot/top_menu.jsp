@@ -18,9 +18,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
 
     <script type="text/javascript">
-          function c_r(node, addr){
+          function sub(form,addr){
 
-              var form = node.parentNode.parentNode
+              var form1 = form
               form.action = addr
               form.submit()
             }

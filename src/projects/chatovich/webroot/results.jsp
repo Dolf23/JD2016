@@ -24,7 +24,7 @@
     <c:forEach var="user" items="${users}" >
             <article class="search-result row">
 
-            <form action="userProfile" id="profile" method="POST">
+            <form action="userProfile" id="profile_${user.id}" method="POST">
             			<div class="col-xs-12 col-sm-12 col-md-4">
             				<img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" />
             			</div>
@@ -33,30 +33,10 @@
 
                         <input type="hidden" name="id_user" value="${user.id}" position:/>
 
-            		    <h3><a href="" onclick="document.getElementById('profile').submit(); return false;" title="">
-            		        ${user.name} ${user.surname}, ${user.age} (${user.id}-id) years old
+            		    <h3><a href="" onclick="document.getElementById('profile_${user.id}').submit(); return false" title="">
+            		        ${user.name} ${user.surname}, ${user.age} years old
             		       </a>
             		    </h3>
-
-            			<h4>${city}</h4>
-            			<h4>${user.email}</h4>
-            			<p>${user.describtion}</p>
-
-            			<c:forEach var="feedback" items="${feedbacks}">
-            			    <c:if test="${feedback.feedback_to==user.id}">
-
-            			        <c:forEach var="allUser" items="${allUsers}">
-            			            <c:if test="${feedback.feedback_from==allUser.id}">
-            			                <p><b>${allUser.name} ${allUser.surname} wrote about ${user.name}: </b>${feedback.feedback_text}</p>
-            			            </c:if>
-            			        </c:forEach>
-
-
-
-            			    </c:if>
-            			</c:forEach>
-
-
 
             			</div>
             			<span class="clearfix borda"></span>
