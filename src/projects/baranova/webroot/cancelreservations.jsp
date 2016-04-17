@@ -19,7 +19,7 @@
        <br>
       <c:forEach items="${listOrders}" var="order">
             <div class="row">
-            <form class="form-horizontal" action="deleteorders" method="POST">
+            <form class="form-horizontal" action="deleteorders" method="post">
                 <div class=col-md-2>
                     <input id="order_idOrder_${order.idOrder}" name="idOrder" type="text"
                     value="${order.idOrder}" class="form-control input-md">
@@ -29,14 +29,13 @@
                     value="${order.guestQuantity}" class="form-control input-md">
                 </div>
                 <div class=col-md-2>
-                    <input id="textinput" name="DaysQuantity" type="text"
+                    <input id="textinput" name="daysQuantity" type="text"
                     value="${order.daysQuantity}" class="form-control input-md">
                 </div>
                 <div class=col-md-2>
-                    <input id="textinput" name="FKReservedRoom" type="text"
+                    <input id="textinput" name="fkReservedRoom" type="text"
                     value="${order.fkReservedRoom}" class="form-control input-md">
                 </div>
-
 
                 <div class=col-md-2>
                     <button id="singlebutton" name="singlebutton" class="btn btn-danger"

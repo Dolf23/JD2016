@@ -29,11 +29,11 @@
                     value="${order.guestQuantity}" class="form-control input-md">
                 </div>
                 <div class=col-md-2>
-                    <input id="textinput" name="DaysQuantity" type="text"
+                    <input id="textinput" name="daysQuantity" type="text"
                     value="${order.daysQuantity}" class="form-control input-md">
                 </div>
                 <div class=col-md-2>
-                    <input id="textinput" name="FKReservedRoom" type="text"
+                    <input id="textinput" name="fkReservedRoom" type="text"
                     value="${order.fkReservedRoom}" class="form-control input-md">
                 </div>
             </form>

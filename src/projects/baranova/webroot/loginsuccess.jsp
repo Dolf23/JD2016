@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="z-top-menu.jsp" %>
 
-    <h1>Welcome to the Hotel Victoria website!!!!Login successful</h1>
+    <h1>Welcome to the Hotel Victoria website!!Login successful, ${login}</h1>
     <br>
     <br>
     <br>

@@ -5,13 +5,13 @@
     <fieldset>
 
         <!-- Form Name -->
-        <legend>Завершение сеанса</legend>
+        <legend>you are successfully logged out!</legend>
 
         <!-- Button -->
         <div class="form-group">
             <label class="col-md-4 control-label" for="singlebutton"></label>
             <div class="col-md-4">
-                <button id="singlebutton" name="singlebutton" class="btn btn-success"><a href="signin.jsp">Login</a></button>
+                <button id="singlebutton" name="singlebutton" class="btn btn-success">Logout</button>
             </div>
         </div>
 

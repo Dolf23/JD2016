@@ -64,6 +64,6 @@
         </div>
    <br>
    </c:forEach>
-   и т.д.
+   и s.д.
 
 <%@ include file="zz-bottom.jsp" %>

@@ -6,6 +6,16 @@
             <!-- Form Name -->
             <legend>Make a reservation (order information)</legend>
              <!-- Text input-->
+              <div class="form-group">
+                 <label class="col-md-4 control-label" for="idOrder">id order</label>
+                         <div class="col-md-4">
+                             <input id="idOrder" name="idOrder" value="0" type="text"
+
+                             placeholder="" class="form-control input-md" required="">
+                             <span class="help-block">Это поле будет скрыто</span>
+                         </div>
+              </div>
+
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="guestQuantity">Guest quantity</label>
                             <div class="col-md-4">

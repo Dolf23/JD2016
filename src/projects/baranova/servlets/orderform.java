@@ -61,7 +61,6 @@ public class orderform extends HttpServlet {
         //основное тут это объект listUser - коллекция пользователей
         req.setAttribute("listOrders", listOrders);
         req.getRequestDispatcher("cancelreservations.jsp").forward(req,resp);
-        req.getRequestDispatcher("users_orders.jsp").forward(req,resp);
 
     }
 
@@ -70,7 +69,6 @@ public class orderform extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        //тут нужно заполнить бин, и передать его в DAO на создание, обновление, удаление
         boolean ok = false;
         String message="Operation of ";
         Orders orders=new Orders();
@@ -90,14 +88,15 @@ public class orderform extends HttpServlet {
             for (Users users:loginuser){
                 fkUser=users.getIdUsers();
             }
+            orders.setIdOrder(Integer.parseInt(req.getParameter("idOrder")));
             try {
-                //orders.setIdOrder(0);
                 orders.setDaysQuantity(Integer.parseInt(req.getParameter("daysQuantity")));
                 orders.setGuestQuantity(Integer.parseInt(req.getParameter("guestQuantity")));
                 orders.setFkUser(fkUser);
             }catch (Exception e) {
             //LOG
             }
+
             //bean получен. Теперь в зависимости от ID добавим обновим или удалим запись в БД.
             OrdersDAO ordersDAO = new OrdersDAO();
             if (0 == orders.getIdOrder()) {
