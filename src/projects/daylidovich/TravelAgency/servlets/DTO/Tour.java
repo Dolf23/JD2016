@@ -1,6 +1,6 @@
 package projects.daylidovich.TravelAgency.servlets.DTO;
 
-import projects.daylidovich.TravelAgency.servlets.DAO.CountreisDAO;
+import projects.daylidovich.TravelAgency.servlets.DAO.CountriesDAO;
 import projects.daylidovich.TravelAgency.servlets.DAO.FoodComplexDAO;
 import projects.daylidovich.TravelAgency.servlets.DAO.TransportDAO;
 import projects.daylidovich.TravelAgency.servlets.DAO.TypeTourDAO;
@@ -79,7 +79,7 @@ public class Tour {
         try {
             outString = "Tour{" +
                     "id=" + id +
-                    ", fk_country=" + CountreisDAO.getCountry(fk_country) +
+                    ", fk_country=" + CountriesDAO.getCountry(fk_country) +
                     ", fk_type_tour=" + TypeTourDAO.getTypeTour(fk_type_tour) +
                     ", fk_transport=" + TransportDAO.getTransport(fk_transport) +
                     ", fk_type_hotel=" + TypeTourDAO.getTypeTour(fk_type_hotel) +

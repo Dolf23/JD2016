@@ -1,7 +1,7 @@
 package projects.daylidovich.TravelAgency.servlets;
 
-import projects.daylidovich.TravelAgency.servlets.DAO.ToursDAO;
-import projects.daylidovich.TravelAgency.servlets.DTO.Tour;
+import projects.daylidovich.TravelAgency.servlets.DAO.*;
+import projects.daylidovich.TravelAgency.servlets.DTO.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +15,20 @@ import java.util.List;
 public class TourSelect extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<TypeTour> typeTourList = new TypeTourDAO().getAll("");
+        req.setAttribute("TypeTour", typeTourList);
 
+        List<Country> countryList = new CountriesDAO().getAll("");
+        req.setAttribute("Countries", countryList);
+
+        List<Transport> transportList = new TransportDAO().getAll("");
+        req.setAttribute("Transport", transportList);
+
+        List<Hotel> hotelList = new TypeHotelDAO().getAll("");
+        req.setAttribute("Hotel", hotelList);
+
+        List<FoodComplex> foodComplexList = new FoodComplexDAO().getAll("");
+        req.setAttribute("FoodComplex", foodComplexList);
     }
 
     @Override

@@ -18,7 +18,7 @@ public class CreateTour extends HttpServlet {
         Tour tour = new Tour();
         try {
             tour.setFk_type_tour(Integer.parseInt(req.getParameter("Type_tour")));
-            tour.setFk_country(CountreisDAO.getID(req.getParameter("Country")));
+            tour.setFk_country(CountriesDAO.getID(req.getParameter("Country")));
             tour.setFk_transport(TransportDAO.getID(req.getParameter("Transport")));
             tour.setFk_type_hotel(TypeHotelDAO.getID(req.getParameter("Type_hotel")));
             tour.setFk_food_complex(FoodComplexDAO.getID(req.getParameter("Food_complex")));

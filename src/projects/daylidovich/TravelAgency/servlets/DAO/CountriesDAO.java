@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CountreisDAO implements IDAO<Country> {
+public class CountriesDAO implements IDAO<Country> {
     public static Integer getID(String country) throws SQLException {
         Integer out = null;
         String sql = String.format("SELECT ID FROM countries_d WHERE Country='%s';", country);
