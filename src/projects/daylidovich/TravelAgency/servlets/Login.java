@@ -18,7 +18,7 @@ public class Login extends HttpServlet {
         String password = req.getParameter("passwordinput");
 
         UsersDAO usersDAO = new UsersDAO();
-        List<User> list = usersDAO.getAll("WHERE Login='" + login + "', Password='" + password + "'");
+        List<User> list = usersDAO.getAll("WHERE Login='" + login + "'and Password='" + password + "'");
         if (0==list.size())
             resp.sendRedirect("login.jsp");
         else{
