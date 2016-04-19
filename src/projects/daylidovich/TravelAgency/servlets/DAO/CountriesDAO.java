@@ -10,6 +10,7 @@ import java.util.List;
 
 public class CountriesDAO implements IDAO<Country> {
     public static Integer getID(String country) throws SQLException {
+        new DAO();
         Integer out = null;
         String sql = String.format("SELECT ID FROM countries_d WHERE Country='%s';", country);
         ResultSet resultSet = DAO.getStatement().executeQuery(sql);
@@ -19,6 +20,7 @@ public class CountriesDAO implements IDAO<Country> {
     }
 
     public static String getCountry(Integer id) throws SQLException {
+        new DAO();
         String out = null;
         String sql = String.format("SELECT * FROM countries_d WHERE ID='%d';", id);
         ResultSet resultSet = DAO.getStatement().executeQuery(sql);
@@ -28,6 +30,7 @@ public class CountriesDAO implements IDAO<Country> {
 
     @Override
     public List<Country> getAll(String where) {
+        new DAO();
         List<Country> list = new ArrayList<>();
         String sql = String.format("SELECT * FROM countries_d %s;", where);
         Statement statement = DAO.getStatement();

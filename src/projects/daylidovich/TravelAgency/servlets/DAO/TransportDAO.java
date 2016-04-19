@@ -10,6 +10,7 @@ import java.util.List;
 
 public class TransportDAO implements IDAO<Transport> {
     public static Integer getID(String transport) throws SQLException {
+        new DAO();
         Integer out = null;
         String sql = String.format("SELECT ID FROM transport_d WHERE Transport='%s';", transport);
         ResultSet resultSet = DAO.getStatement().executeQuery(sql);
@@ -18,6 +19,7 @@ public class TransportDAO implements IDAO<Transport> {
     }
 
     public static String getTransport(Integer id) throws SQLException {
+        new DAO();
         String out = null;
         String sql = String.format("SELECT * FROM transport_d WHERE ID='%d';", id);
         ResultSet resultSet = DAO.getStatement().executeQuery(sql);
@@ -27,6 +29,7 @@ public class TransportDAO implements IDAO<Transport> {
 
     @Override
     public List<Transport> getAll(String where) {
+        new DAO();
         List<Transport> list = new ArrayList<>();
         String sql = String.format("SELECT * FROM transport_d %s;", where);
         Statement statement = DAO.getStatement();

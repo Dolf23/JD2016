@@ -1,4 +1,4 @@
-package projects.daylidovich.TravelAgency.servlets.DTO;
+package projects.daylidovich.TravelAgency.servlets;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

@@ -10,6 +10,7 @@ import java.util.List;
 
 public class TypeTourDAO implements IDAO<TypeTour> {
     public static Integer getID(String typeTour) throws SQLException {
+        new DAO();
         Integer out = null;
         String sql = String.format("SELECT ID FROM type_tour_d WHERE Type_tour='%s';", typeTour);
         ResultSet resultSet = DAO.getStatement().executeQuery(sql);
@@ -18,6 +19,7 @@ public class TypeTourDAO implements IDAO<TypeTour> {
     }
 
     public static String getTypeTour(Integer id) throws SQLException {
+        new DAO();
         String out = null;
         String sql = String.format("SELECT * FROM type_tour_d WHERE ID='%d';", id);
         ResultSet resultSet = DAO.getStatement().executeQuery(sql);
@@ -29,6 +31,7 @@ public class TypeTourDAO implements IDAO<TypeTour> {
     public List<TypeTour> getAll(String where) {
         List<TypeTour> list = new ArrayList<>();
         String sql = String.format("SELECT * FROM type_tour_d %s;", where);
+        new DAO();
         Statement statement = DAO.getStatement();
         ResultSet resultSet;
         try{

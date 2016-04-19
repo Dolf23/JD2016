@@ -16,19 +16,19 @@ public class TourSelect extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<TypeTour> typeTourList = new TypeTourDAO().getAll("");
-        req.setAttribute("TypeTour", typeTourList);
+        req.setAttribute("typeTourList", typeTourList);
 
         List<Country> countryList = new CountriesDAO().getAll("");
-        req.setAttribute("Countries", countryList);
+        req.setAttribute("countryList", countryList);
 
         List<Transport> transportList = new TransportDAO().getAll("");
-        req.setAttribute("Transport", transportList);
+        req.setAttribute("transportList", transportList);
 
         List<Hotel> hotelList = new TypeHotelDAO().getAll("");
-        req.setAttribute("Hotel", hotelList);
+        req.setAttribute("hotelList", hotelList);
 
         List<FoodComplex> foodComplexList = new FoodComplexDAO().getAll("");
-        req.setAttribute("FoodComplex", foodComplexList);
+        req.setAttribute("foodComplexList", foodComplexList);
     }
 
     @Override

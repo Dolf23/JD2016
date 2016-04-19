@@ -12,6 +12,7 @@ public class TypeHotelDAO implements IDAO<Hotel> {
     public static Integer getID(String typeHotel) throws SQLException {
         Integer out = null;
         String sql = String.format("SELECT ID FROM type_hotel_d WHERE Type_hotel='%s';", typeHotel);
+        new DAO();
         ResultSet resultSet = DAO.getStatement().executeQuery(sql);
         if (resultSet.next()) out = resultSet.getInt("id");
         return out;
@@ -20,6 +21,7 @@ public class TypeHotelDAO implements IDAO<Hotel> {
     public static String getTypeHotel(Integer id) throws SQLException {
         String out = null;
         String sql = String.format("SELECT * FROM type_hotel_d WHERE ID='%d';", id);
+        new DAO();
         ResultSet resultSet = DAO.getStatement().executeQuery(sql);
         if (resultSet.next()) out = resultSet.getString("Type_hotel");
         return out;
@@ -27,6 +29,7 @@ public class TypeHotelDAO implements IDAO<Hotel> {
 
     @Override
     public List<Hotel> getAll(String where) {
+        new DAO();
         List<Hotel> list = new ArrayList<>();
         String sql = String.format("SELECT * FROM type_hotel_d %s;", where);
         Statement statement = DAO.getStatement();

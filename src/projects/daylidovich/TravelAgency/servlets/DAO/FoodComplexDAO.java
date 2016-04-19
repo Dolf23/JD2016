@@ -10,6 +10,7 @@ import java.util.List;
 
 public class FoodComplexDAO implements IDAO<FoodComplex> {
     public static Integer getID(String food) throws SQLException {
+        new DAO();
         Integer out = null;
         String sql = String.format("SELECT ID FROM food_complex_d WHERE Food_complex='%s';", food);
         ResultSet resultSet = DAO.getStatement().executeQuery(sql);
@@ -18,6 +19,7 @@ public class FoodComplexDAO implements IDAO<FoodComplex> {
     }
 
     public static String getFoodComplex(Integer id) throws SQLException {
+        new DAO();
         String out = null;
         String sql = String.format("SELECT * FROM food_complex_d WHERE ID='%d';", id);
         ResultSet resultSet = DAO.getStatement().executeQuery(sql);
@@ -27,6 +29,7 @@ public class FoodComplexDAO implements IDAO<FoodComplex> {
 
     @Override
     public List<FoodComplex> getAll(String where) {
+            new DAO();
             List<FoodComplex> list = new ArrayList<>();
             String sql = String.format("SELECT * FROM food_complex_d %s;", where);
             Statement statement = DAO.getStatement();

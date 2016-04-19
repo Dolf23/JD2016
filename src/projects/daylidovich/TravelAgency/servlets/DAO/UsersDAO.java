@@ -12,6 +12,7 @@ import java.util.List;
 public class UsersDAO extends DAO implements IDAO<User> {
     @Override
     public List<User> getAll(String where){
+        new DAO();
         List<User> users = new ArrayList<>();
         String sql = String.format("SELECT * FROM users_d %s;", where);
         Statement statement = DAO.getStatement();
@@ -37,6 +38,7 @@ public class UsersDAO extends DAO implements IDAO<User> {
 
     @Override
     public User read(int id) {
+        new DAO();
         List<User> users = getAll("WHERE ID=" + id + " LIMIT 0,1");
         if(0 < users.size())
             return users.get(0);
@@ -46,6 +48,7 @@ public class UsersDAO extends DAO implements IDAO<User> {
 
     @Override
     public boolean create(User user) {
+        new DAO();
         String sql = String.format("insert INTO users_d(Name, Surname, Email, Login, Password, FK_Role)" +
                 " values('%s', '%s', '%s', '%s', '%s', %d);",
                 user.getName(), user.getSurname(), user.getEmail(), user.getLogin(), user.getPassword(), user.getFk_Role());
@@ -54,6 +57,7 @@ public class UsersDAO extends DAO implements IDAO<User> {
 
     @Override
     public boolean update(User user) {
+        new DAO();
         String sql = String.format("UPDATE users_d SET Name='%s',  Surname='%s',  Email='%s',  Login='%s',  Password='%s',  FK_Role=%d WHERE id=%d",
                 user.getName(), user.getSurname(), user.getEmail(), user.getLogin(), user.getPassword(), user.getFk_Role(), user.getId());
         return 0 < executeUpdate(sql);
@@ -61,6 +65,7 @@ public class UsersDAO extends DAO implements IDAO<User> {
 
     @Override
     public boolean delete(User user) {
+        new DAO();
         String sql = String.format("DELETE FROM users_d WHERE id = %d;", user.getId());
         return 0 < executeUpdate(sql);
     }
