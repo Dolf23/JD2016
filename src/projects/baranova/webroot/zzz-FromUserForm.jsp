@@ -2,30 +2,24 @@
 <%@ include file="z-top-menu.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!--
-=========================================================================================
-Эта страница использует EL+JSTL - Java Standart Template Library
-Чтобы это было возможно необходимо
-1. Скачать библиотеку http://central.maven.org/maven2/javax/servlet/jstl/1.2/jstl-1.2.jar
-2. Положить ее в папку lib вашего проекта (она потом деплоится в WEB-INF)
-3. Объявить применение тегов JSTL указав в заголовке
-   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-4. После этого становятся доступными конструкции вида
-    <с:out value="текст" />
-    <с:forEach var="yourItem" items="yourListItems">
-          ${yourItem}<br> или ${yourItem.свойство}<br>
-    <с:forEach>
-(НЕ КОПИРУЙТЕ КОД ВЫШЕ, ТУТ <с:out - русская, а код ниже можно копировать, он рабочий)
-=========================================================================================
--->
-   <div class="row">
-    <b>
-        <div class=col-md-1>ID</div>
-        <div class=col-md-2>Имя</div>
-        <div class=col-md-2>Пароль</div>
-        <div class=col-md-7>Email</div>
-    </b>
-   </div>
+    <!-- Основное содержимое -->
+         <div class="page-header">
+           <h1>Searching appropriate rooms for you</h1>
+         </div>
+
+         <h3>Our comfortable rooms for your</h3>
+
+
+         <div class="row">
+           <div class="col-md-2">Room number</div>
+           <div class="col-md-2">Quest quantity</div>
+           <div class="col-md-2">First bed size </div>
+           <div class="col-md-2">Second bed size</div>
+           <div class="col-md-1">Seaview</div>
+           <div class="col-md-1">Floor</div>
+           <div class="col-md-1">Price</div>
+
+         </div>
    <br>
    <!-- Коллекцию listUser мы получаем по get из сервлета UserForm -->
    <c:forEach items="${listUser}" var="user">
@@ -64,6 +58,6 @@
         </div>
    <br>
    </c:forEach>
-   и s.д.
+   и т.д.
 
 <%@ include file="zz-bottom.jsp" %>

@@ -1,0 +1,103 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0"
+         metadata-complete="true">
+
+    <description>
+        baranova: Hotel project.
+    </description>
+
+    <display-name>Hotel project</display-name>
+
+    <servlet>
+        <servlet-name>hello</servlet-name>
+        <servlet-class>projects.baranova.servlets.hello</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>hello</servlet-name>
+        <url-pattern>/hello/</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>User</servlet-name>
+        <servlet-class>projects.baranova.servlets.userform</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>User</servlet-name>
+        <url-pattern>/newuser</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Order</servlet-name>
+        <servlet-class>projects.baranova.servlets.orderform</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Order</servlet-name>
+        <url-pattern>/neworder</url-pattern>
+        <url-pattern>/readorder</url-pattern>
+        <url-pattern>/readorders</url-pattern>
+        <url-pattern>/updateorder</url-pattern>
+        <url-pattern>/deleteorders</url-pattern>
+
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>projects.baranova.servlets.login</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>projects.baranova.servlets.logout</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+
+    <filter>
+        <filter-name>EncodingUTF8</filter-name>
+        <filter-class>projects.baranova.servlets.UTF8</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>EncodingUTF8</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+    <security-role>
+        <role-name>user</role-name>
+        <role-name>tomcat</role-name>
+    </security-role>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>Enter your login and password</realm-name>
+        <form-login-config>
+            <form-login-page>/signin.jsp</form-login-page>
+            <form-error-page>/signout.jsp</form-error-page>
+        </form-login-config>
+    </login-config>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>CreateAa</web-resource-name>
+            <url-pattern></url-pattern>
+        </web-resource-collection>
+
+        <auth-constraint>
+            <role-name>user</role-name>
+            <role-name>tomcat</role-name>
+        </auth-constraint>
+    </security-constraint>
+</web-app>
